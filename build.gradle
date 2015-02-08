@@ -1,22 +1,24 @@
-apply plugin: 'groovy'
-apply plugin: 'idea'
-apply plugin: 'io.ratpack.ratpack-groovy'
+apply plugin:'groovy'
+apply plugin:'idea'
+apply plugin:'io.ratpack.ratpack-groovy'
 
 repositories {
-    jcenter()
+  jcenter()
+  mavenCentral()
+  maven{url 'http://clinker.netty.io/nexus/content/repositories/snapshots'}
 }
 
 dependencies {
-    compile 'org.codehaus.groovy:groovy:2.4.0'
-    compile 'org.spockframework:spock-core:0.7-groovy-2.0'
-    runtime 'org.slf4j:slf4j-simple:1.7.5'
+  compile 'org.codehaus.groovy.modules.http-builder:http-builder:0.7.1'
+  compile 'org.spockframework:spock-core:0.7-groovy-2.0'
+  runtime 'org.slf4j:slf4j-simple:1.7.5'
 }
 
 buildscript {
-    repositories {
-        jcenter()
-    }
-    dependencies {
-        classpath 'io.ratpack:ratpack-gradle:0.9.13'
-    }
+  repositories {
+    jcenter()
+  }
+  dependencies {
+    classpath 'io.ratpack:ratpack-gradle:0.9.13'
+  }
 }
