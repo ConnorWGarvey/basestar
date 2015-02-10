@@ -33,10 +33,6 @@ class FunctionalTest extends Specification {
     server.stop()
   }
 
-  def setup() {
-    def injector = Guice.createInjector(new TestBasestarModule())
-  }
-
   def 'can delete a deployment'() {
     when: def response = client.delete(path:'deployment/deploymentName')
     then:
