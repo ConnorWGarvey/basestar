@@ -6,9 +6,9 @@ package org.basestar
 enum HTTPStatus {
   ACCEPTED(202),
   NO_CONTENT(204),
-  OK(200);
+  OK(200)
 
-  int code;
+  int code
 
   HTTPStatus(int code) {
     this.code = code

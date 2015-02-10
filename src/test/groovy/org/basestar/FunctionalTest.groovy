@@ -4,6 +4,7 @@ import static groovyx.net.http.ContentType.*
 import groovy.json.JsonSlurper
 import groovyx.net.http.RESTClient
 import org.apache.http.protocol.HTTP
+import org.basestar.model.Deployment
 import ratpack.groovy.Groovy
 import ratpack.server.RatpackServer
 import spock.lang.Shared
@@ -42,7 +43,7 @@ class FunctionalTest extends Specification {
     then:
     response.status == HTTPStatus.OK.code
     parsed.name == 'deploymentName'
-    parsed.status == 'SUCCEEDED'
+    parsed.status == Deployment.Status.DEPLOYED
   }
 
   def 'can submit a deployment'() {

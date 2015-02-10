@@ -1,5 +1,7 @@
 import static ratpack.groovy.Groovy.ratpack
+import com.google.inject.persist.jpa.JpaPersistModule
 import org.basestar.BasestarModule
+import org.basestar.model.Deployment
 
 ratpack {
   handlers {
@@ -15,7 +17,7 @@ ratpack {
             response.send()
           }
           get {
-            render([name:allPathTokens.name, status:'SUCCEEDED'])
+            render([name:allPathTokens.name, status:Deployment.Status.DEPLOYED])
           }
         }
       }
@@ -23,5 +25,6 @@ ratpack {
   }
   bindings {
     add new BasestarModule()
+    add new JpaPersistModule('basestarJpaUnit')
   }
 }
