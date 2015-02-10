@@ -1,12 +1,16 @@
 package org.basestar
 
 import static groovyx.net.http.ContentType.*
+import com.google.inject.Guice
 import groovy.json.JsonSlurper
 import groovyx.net.http.RESTClient
+import javax.inject.Inject
 import org.apache.http.protocol.HTTP
+import org.basestar.dataaccess.Deployments
 import org.basestar.model.Deployment
 import ratpack.groovy.Groovy
 import ratpack.server.RatpackServer
+import spock.guice.UseModules
 import spock.lang.Shared
 import spock.lang.Specification
 
@@ -27,6 +31,10 @@ class FunctionalTest extends Specification {
 
   def cleanupSpec() {
     server.stop()
+  }
+
+  def setup() {
+    def injector = Guice.createInjector(new TestBasestarModule())
   }
 
   def 'can delete a deployment'() {
